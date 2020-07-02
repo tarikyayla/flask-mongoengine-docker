@@ -8,7 +8,7 @@ Api ayarları :[/api/settings.py](/api/settings.py)
 ```bash
 pip install requests 
 pip install pytest
-pytest test/tests.py
+pytest tests/test.py
 ```
 
 ### Çalıştırma
