@@ -1,12 +1,36 @@
-web:
-    build: .
-    command: python -u app/app.py
+version: "3"
+services:
+  web:
+      build: 
+        context : ./api
+        dockerfile: Dockerfile
+      command: python -u api/app.py
+      ports:
+        - "5000:5000"
+      volumes:
+        - .:/iqvizyon_proje
+      links:
+        - mongo
+      depends_on:
+        - redis
+        - mongo
+  mongo:
+      image: mongo
+  redis:
+      image: redis
+  worker:
+    build:
+      context: celery-tasks
+      dockerfile: Dockerfile
+    depends_on:
+      - redis
+  monitor:
+    build:
+      context: celery-tasks
+      dockerfile: Dockerfile
     ports:
-      - "5000:5000"
-    volumes:
-      - .:/iqvizyon_proje
-    links:
-      - mongo
-mongo:
-    image: mongo
-  
+      - "5555:5555"
+    entrypoint: flower
+    command:  -A tasks --port=5555 --broker=redis://redis:6379/0
+    depends_on:
+      - redis
