@@ -23,7 +23,7 @@ def test_update_project_response_200():
 
 	request_object = {
 		'name' : "IQ Vizyon Test Projesi Updated",
-		'status' : 4
+		'status' : 1
 	}
 	url = API_URL + projects[0]["id"]
 	response = requests.put(url ,json=request_object,headers=header,verify=False)
@@ -36,7 +36,7 @@ def test_get_project_200_and_check_updated_values():
 	response = requests.get(url,verify=False)
 
 	assert response.status_code == 200
-	assert response.json()["status"] == 4
+	assert response.json()["status"] == 1
 	assert response.json()["name"] == "IQ Vizyon Test Projesi Updated"
 
 
@@ -69,7 +69,7 @@ def test_update_task_200_and_values():
 	url = API_URL + projects[0]["id"] + "/" + tasks[0]["id"]
 	request_object = {
 		"content" : "updated task content",
-		"status" : 2
+		"status" : 0
 	}
 	response = requests.put(url,json=request_object,headers=header,verify=False)
 	assert response.status_code == 200
@@ -104,11 +104,11 @@ def test_get_comment_and_validate_changed_values():
 	comments[0] = response.json()
 
 
-def test_delete_comment_response_200():
-	url = API_URL + projects[0]["id"] + "/" + tasks[0]["id"] +"/" + comments[0]["id"]
-	response = requests.delete(url,verify=False)
-	assert response.status_code == 200
-	assert response.text == "OK"
+# def test_delete_comment_response_200():
+# 	url = API_URL + projects[0]["id"] + "/" + tasks[0]["id"] +"/" + comments[0]["id"]
+# 	response = requests.delete(url,verify=False)
+# 	assert response.status_code == 200
+# 	assert response.text == "OK"
 
 # def test_delete_task_response_200():
 # 	url = API_URL + projects[0]["id"] + "/" + tasks[0]["id"]

@@ -1,0 +1,33 @@
+https://dbdiagram.io/d/5efb02cc0425da461f040d13
+
+api/models.py ve api/schemas.py inceleyerek apinin nasıl çalıştığıyla alakalı fikir sahibi olabilirsin.
+
+/projects 
+
+GET /projects --> List of all projects 
+POST /projects --> Create new project 
+
+/projects/{projectId}
+
+GET /projects/{projectId} --> get project and list  all tasks of project  
+POST /projects/{projectId} --> Create new task 
+DELETE /projects/{projectId} --> Delete project
+PUT /projects/{projectId} - update project
+
+/projects/{projectId}/{taskId}
+
+GET /projects/{projectId}/{taskId} --> get all comments 
+POST /projects/{projectId}/{taskId} --> create new comment 
+DELETE /projects/{projectId}/{taskId} --> delete task 
+PUT /projects/{projectId}/{taskId} - update task 
+
+/projects/{projectId}/{taskId}/{commentId}
+
+GET /projects/{projectId}/{taskId}/{commentId} --> get comment
+DELETE /projects/{projectId}/{taskId}/{commentId} --> delete comment
+PUT /projects/{projectId}/{taskId}/{commentId} - update comment 
+
+
+400 Response for request errors
+201 Created 
+200 OK (PUT/DELETEs successfull) 
