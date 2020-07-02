@@ -1,5 +1,3 @@
-https://dbdiagram.io/d/5efb02cc0425da461f040d13
-
 api/models.py ve api/schemas.py inceleyerek apinin nasıl çalıştığıyla alakalı fikir sahibi olabilirsin.
 
 /projects 
