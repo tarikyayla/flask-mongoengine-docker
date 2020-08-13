@@ -1,4 +1,4 @@
-# Flask-RestApi-Celery-Redis
+# Flask-Mongo-Celery-Redis
 *Python 3.6 ve daha üzeri sürümleri destekler*
 ### Ayarlar 
 Celery için zaman ayarı : [/celery-tasks/task.py](/celery-tasks/task.py)
